@@ -2,31 +2,63 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Rooms;
+using UnityEditor;
 
 namespace Targets
 {
-    public abstract class Target
+    [RequireComponent(typeof(SpriteRenderer))]
+    public abstract class Target:MonoBehaviour
     {
-        public GameObject gameObject;
-
-        public Target(Room roomNumber)
+        public GameObject TargetGameObject
         {
-            gameObject = RoomsManager.GetPosition(roomNumber);
+            get
+            {
+                return _target;
+            }
+
+            set
+            {
+                _target = value;
+            }
         }
 
-        public void SpawnTarget()
+        protected IMovable _movable;
+        protected IDamageable _damageable;
+
+        protected GameObject _target;
+        protected GameObject _movmentTrajectory;
+        protected float lifeTime = 0;
+        protected int rewardScore = 0;
+
+        protected abstract void InitBehaviors();
+
+        public Target(GameObject target, GameObject movmentTrajectory)
         {
+            _target = target;
+            _movmentTrajectory = movmentTrajectory;
+            InitBehaviors();
+            InstantiateTarget(_target);
+            _target.transform.position = _movable.StartPoint();
         }
 
-        public void DestroyTarget()
+        private void InstantiateTarget(GameObject target)
         {
-
+            _target = Instantiate(target);
+           // target.transform.localScale = RoomsManager.GetLocalScale();
         }
 
         public void MoveTarget()
         {
+            _target.transform.position = _movable.Move(_target.transform.position, lifeTime);
+            lifeTime += 0.5f*Time.deltaTime;
 
+            //target.transform.position = MovmentManager.Move(movmentTrajectory, target.transform.position, lifeTime);
+            // lifeTime += Time.deltaTime;
+        }
+
+        public void Hit()
+        {
+            _damageable.HitTarget(rewardScore);
         }
 
     }
