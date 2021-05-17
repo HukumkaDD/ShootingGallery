@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Room
+  - MoveCurvy
   layers:
   - Default
   - TransparentFX
@@ -13,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Room1
+  - Room2
+  - Room3
+  - Room4
   - 
   - 
   - 
@@ -40,4 +42,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Room1
+    uniqueID: 2143517355
+    locked: 0
+  - name: Room2
+    uniqueID: 3501249419
+    locked: 0
+  - name: Room3
+    uniqueID: 1568551931
+    locked: 0
+  - name: Room4
+    uniqueID: 2498312557
     locked: 0
