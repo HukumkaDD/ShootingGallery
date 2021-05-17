@@ -6,19 +6,16 @@ public class DifficultyMenu : MonoBehaviour
 {
     public void SetEasyDifficulty()
     {
-        PlayerPrefs.SetString("Difficulty", "Easy");
-        PlayerPrefs.Save();
+        DifficultManager.SetEasyDifficulty();
     }
 
     public void SetMediumDifficulty()
     {
-        PlayerPrefs.SetString("Difficulty", "Medium");
-        PlayerPrefs.Save();
+        DifficultManager.SetMediumDifficulty();
     }
 
     public void SetHardDifficulty()
     {
-        PlayerPrefs.SetString("Difficulty", "Hard");
-        PlayerPrefs.Save();
+        DifficultManager.SetHardDifficulty();
     }
 }

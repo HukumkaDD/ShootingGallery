@@ -7,58 +7,48 @@ using UnityEditor;
 namespace Targets
 {
     [RequireComponent(typeof(SpriteRenderer))]
-    public abstract class Target:MonoBehaviour
+    public abstract class Target
     {
         public GameObject TargetGameObject
         {
             get
             {
-                return _target;
+                return _target.GetTarget();
             }
 
             set
             {
-                _target = value;
+                _target.SetTarget(value);
+            }
+        }
+        public bool IsTargetLive
+        {
+            get
+            {
+                return _target.GetIsLive();
             }
         }
 
         protected IMovable _movable;
         protected IDamageable _damageable;
+        protected ITarget _target;
 
-        protected GameObject _target;
-        protected GameObject _movmentTrajectory;
-        protected float lifeTime = 0;
-        protected int rewardScore = 0;
+        protected abstract void InitBehaviors(GameObject target, GameObject movmentTrajectory, int score);
 
-        protected abstract void InitBehaviors();
-
-        public Target(GameObject target, GameObject movmentTrajectory)
+        public Target(GameObject target, GameObject movmentTrajectory, int score)
         {
-            _target = target;
-            _movmentTrajectory = movmentTrajectory;
-            InitBehaviors();
-            InstantiateTarget(_target);
-            _target.transform.position = _movable.StartPoint();
-        }
-
-        private void InstantiateTarget(GameObject target)
-        {
-            _target = Instantiate(target);
-           // target.transform.localScale = RoomsManager.GetLocalScale();
+            InitBehaviors(target, movmentTrajectory, score);
         }
 
         public void MoveTarget()
         {
-            _target.transform.position = _movable.Move(_target.transform.position, lifeTime);
-            lifeTime += 0.5f*Time.deltaTime;
-
-            //target.transform.position = MovmentManager.Move(movmentTrajectory, target.transform.position, lifeTime);
-            // lifeTime += Time.deltaTime;
+            if (_target.GetTarget() != null)
+                _target.GetTarget().transform.position = _movable.Move(_target.GetTarget().transform.position, _target.GetSpeed());
         }
 
         public void Hit()
         {
-            _damageable.HitTarget(rewardScore);
+            _target.ApplyDamage();
         }
 
     }

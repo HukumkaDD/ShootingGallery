@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NonDamageableBehavior : IDamageable
+public class NonDamageableBehavior :MonoBehaviour, IDamageable
 {
-    public void HitTarget(int score)
+    public void HitTarget(ITarget target)
     {
+    }
+    public void DisappearTarget(ITarget target)
+    {
+        target.SetIsLive(false);
+        Destroy(target.GetTarget());
     }
 }

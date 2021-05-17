@@ -13,7 +13,12 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
-        SceneManager.LoadScene("DefaultShootingGallery");
+        SceneManager.LoadScene(Helper.Scenes[Helper.TagName.DefaultShootingGallery]);
+    }
+
+    public void Score()
+    {
+        PlayerProfile.LoadPlayer();
     }
 
     public void Quit()

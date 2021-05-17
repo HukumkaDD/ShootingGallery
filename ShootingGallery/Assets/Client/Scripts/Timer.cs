@@ -1,34 +1,47 @@
-﻿using System.Collections;
+﻿using Game;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Timer : MonoBehaviour
+public class Timer
 {
+    private readonly float _timer;
+    private readonly float _minTime;
+    private readonly float _maxTime;
+    private readonly bool _isRange;
+    private float _currentTimer;
 
-    private float _minTimeSpawn;
-    private float _maxTimeSpawn;
-    private float _timer;
+    public float CurrentTime => _currentTimer;
 
-    public Timer(float minTimeSpawn, float maxTimeSpawn)
+    public TimerHandler DoAction;
+
+    public Timer(TimerHandler doAction, float minTime, float maxTime)
     {
-        _timer = 0;
-        _minTimeSpawn = minTimeSpawn;
-        _maxTimeSpawn = maxTimeSpawn;
+        DoAction = doAction;
+        _currentTimer = UnityEngine.Random.Range(_minTime, _maxTime);
+        _isRange = true;
+        _minTime = minTime;
+        _maxTime = maxTime;
     }
 
-    void Start()
+    public Timer(TimerHandler doAction, float timer)
     {
-
+        DoAction = doAction;
+        _currentTimer = timer;
+        _isRange = false;
+        _timer = timer;
     }
 
-    void Update()
+    public void Update()
     {
-        if (_timer > 0)
-            _timer -= Time.deltaTime;
-        if (_timer <= 0)
+        if (_currentTimer > 0)
+            _currentTimer -= Time.deltaTime;
+        if (_currentTimer <= 0)
         {
-            _timer = Random.Range(_minTimeSpawn, _maxTimeSpawn);
-        }
+            DoAction?.Invoke();
+            _currentTimer = _isRange ? UnityEngine.Random.Range(_minTime, _maxTime) : _timer;
+        }          
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class BezierCurve
 {
-    public static Vector3 GetPoint(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
+    public static Vector2 GetPoint(Vector3 p0, Vector3 p1, Vector3 p2, Vector3 p3, float t)
     {
         if (t < 0)
             t = 0;
@@ -18,7 +18,8 @@ public static class BezierCurve
         Vector3 p012 = Vector3.Lerp(p01, p12, t);
         Vector3 p123 = Vector3.Lerp(p12, p23, t);
 
-        return Vector3.Lerp(p012, p123, t);
+        Vector3 p = Vector3.Lerp(p012, p123, t);
+        return new Vector2(p.x, p.y);
     }
 
 }

@@ -1,15 +1,22 @@
-﻿using Assets.Client.Scripts;
+﻿using Game;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class DamageableBehavior : IDamageable
+public class DamageableBehavior : MonoBehaviour, IDamageable
 {
-    //public UnityEvent OnHitTarget;
-    public void HitTarget(int score)
+    public void HitTarget(ITarget target)
     {
-       // OnHitTarget.Invoke(score);
-        Player.Score += score;
+        Player.UpdateScore(target.GetScore());
+        //target.GetHitAudio().Play();
+        target.SetIsLive(false);
+        Destroy(target.GetTarget());
+    }
+
+    public void DisappearTarget(ITarget target)
+    {
+        target.SetIsLive(false);
+        Destroy(target.GetTarget());
     }
 }

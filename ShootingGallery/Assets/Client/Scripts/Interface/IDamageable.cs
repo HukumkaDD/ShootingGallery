@@ -2,5 +2,7 @@
 
 public interface IDamageable
 {
-    void HitTarget(int score);
+    void HitTarget(ITarget target);
+
+    void DisappearTarget(ITarget target);
 }
