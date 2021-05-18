@@ -8,7 +8,7 @@ namespace Targets
     {
         public WrongTarget(GameObject target, GameObject movmentTrajectory) : base(target, movmentTrajectory, -1)
         {
-            _target.GetTarget().transform.position = _movable.StartPoint(_target.GetTarget().transform.position);
+            TargetGameObject.transform.position = _movable.StartPoint(TargetGameObject.transform.position);
         }
 
         protected override void InitBehaviors(GameObject target, GameObject movmentTrajectory, int score)

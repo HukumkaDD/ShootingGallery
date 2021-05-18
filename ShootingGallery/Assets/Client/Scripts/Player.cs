@@ -31,5 +31,16 @@ namespace Game
             Score = 0;
         }
 
+        public static GameObject ShootingTarget(Transform transform)
+        {
+            Ray ray = new Ray(Camera.main.ScreenToWorldPoint(Input.mousePosition), transform.forward);
+
+            if (!Physics.Raycast(ray, out RaycastHit hit))
+                return null;
+
+            if (GameObject.Find(hit.collider.gameObject.name) == null)
+                return null;
+            return hit.collider.gameObject;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace Targets
         neutralTarget,
         wrongTarget,
     }
+
     public static class TargetsManager
     {
         [Range(0, 100)]

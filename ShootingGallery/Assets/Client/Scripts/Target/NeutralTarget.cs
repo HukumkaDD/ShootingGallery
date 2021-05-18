@@ -9,8 +9,8 @@ namespace Targets
     {
         public NeutralTarget(GameObject target, GameObject movmentTrajectory) : base(target, movmentTrajectory, 0)
         {
-            _target.GetTarget().transform.position = new Vector3(_target.GetTarget().transform.position.x, _target.GetTarget().transform.position.y, -1f);
-            _target.GetTarget().transform.position = _movable.StartPoint(_target.GetTarget().transform.position);
+            TargetGameObject.transform.position = new Vector3(TargetGameObject.transform.position.x, TargetGameObject.transform.position.y, -1f);
+            TargetGameObject.transform.position = _movable.StartPoint(TargetGameObject.transform.position);
         }
 
         protected override void InitBehaviors(GameObject target, GameObject movmentTrajectory, int score)

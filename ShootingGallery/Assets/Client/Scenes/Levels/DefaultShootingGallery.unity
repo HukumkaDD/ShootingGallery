@@ -1204,7 +1204,7 @@ PrefabInstance:
     - target: {fileID: 1060330374458722745, guid: d8c1c1aa6c9c54443a6579340a693cf3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.81
+      value: 12.55
       objectReference: {fileID: 0}
     - target: {fileID: 1060330375394451956, guid: d8c1c1aa6c9c54443a6579340a693cf3,
         type: 3}
@@ -1219,12 +1219,12 @@ PrefabInstance:
     - target: {fileID: 1060330375476057545, guid: d8c1c1aa6c9c54443a6579340a693cf3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.78
+      value: -13
       objectReference: {fileID: 0}
     - target: {fileID: 1060330375476057545, guid: d8c1c1aa6c9c54443a6579340a693cf3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8.68
+      value: 9.39
       objectReference: {fileID: 0}
     - target: {fileID: 6157427940492867953, guid: d8c1c1aa6c9c54443a6579340a693cf3,
         type: 3}
@@ -1923,7 +1923,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ScopeCursor: {fileID: 2800000, guid: 60bbcccafa28f184abe265443ae0a7d9, type: 3}
   ParentTarget: {fileID: 1658918333}
-  Pointer: {fileID: 745272429}
   Score: {fileID: 1440717078}
   Time: {fileID: 1506132114}
   minTimeSpawn: 0.25
@@ -3206,6 +3205,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1787640916}
+  - component: {fileID: 1787640917}
   m_Layer: 0
   m_Name: Audio Controller
   m_TagString: Untagged
@@ -3227,6 +3227,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1787640917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1787640915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a5208d4afd35043a5b6d5ef4a58259, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: button-click
+    clip: {fileID: 8300000, guid: 2cccacaccde838c4d89b11646eb6044b, type: 3}
+    volume: 0.398
+    pitch: 1.438
+    source: {fileID: 0}
+  - name: among-death
+    clip: {fileID: 8300000, guid: 5c59f2a4d6d3d364a96c47a3fbb6cb6b, type: 3}
+    volume: 0.482
+    pitch: 1
+    source: {fileID: 0}
+  - name: gun-shot
+    clip: {fileID: 8300000, guid: 8087c03c8db67f643b42ccef73ac0f25, type: 3}
+    volume: 0.604
+    pitch: 1.582
+    source: {fileID: 0}
+  - name: ricochet
+    clip: {fileID: 8300000, guid: d6c0c2746ff94de46b4c11f267bd3cc0, type: 3}
+    volume: 0.721
+    pitch: 2.555
+    source: {fileID: 0}
+  - name: mistake-shot
+    clip: {fileID: 8300000, guid: 55dc564e0d128a140949cd2b9dc9b8fa, type: 3}
+    volume: 0.721
+    pitch: 2.555
+    source: {fileID: 0}
 --- !u!1 &1840722483
 GameObject:
   m_ObjectHideFlags: 0
