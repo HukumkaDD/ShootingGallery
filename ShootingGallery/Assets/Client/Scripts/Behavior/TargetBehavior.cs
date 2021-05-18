@@ -15,7 +15,7 @@ namespace Game
 
         public UnityEvent HitEvent;
         public DeadHandler OnTargetKill;
- 
+
         public TargetBehavior(GameObject target, DeadHandler onTargetKill, int rewardScore)
         {
             OnTargetKill = onTargetKill;
@@ -58,10 +58,7 @@ namespace Game
         public void ApplyDamage()
         {
             if (_isLive)
-            {
                 OnTargetKill?.Invoke(this);
-                //HitEvent.Invoke();
-            }
         }
     }
 }

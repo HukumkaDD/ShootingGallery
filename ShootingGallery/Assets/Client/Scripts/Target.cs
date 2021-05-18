@@ -42,8 +42,8 @@ namespace Targets
 
         public void MoveTarget()
         {
-            if (_target.GetTarget() != null)
-                _target.GetTarget().transform.position = _movable.Move(_target.GetTarget().transform.position, _target.GetSpeed());
+            if (TargetGameObject != null)
+                TargetGameObject.transform.position = _movable.Move(TargetGameObject.transform.position, _target.GetSpeed());
         }
 
         public void Hit()

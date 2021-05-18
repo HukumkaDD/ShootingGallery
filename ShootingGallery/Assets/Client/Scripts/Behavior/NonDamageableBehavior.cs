@@ -6,6 +6,7 @@ public class NonDamageableBehavior :MonoBehaviour, IDamageable
 {
     public void HitTarget(ITarget target)
     {
+        FindObjectOfType<AudioManager>().Play(Helper.Audio[Helper.TagName.RicochetSound]);
     }
     public void DisappearTarget(ITarget target)
     {
